@@ -12,8 +12,8 @@ let package = Package(
   targets: [
    .binaryTarget(
      name: "KMMAnalytics",
-     url: "https://github.com/aleksa-aetherius/KMMAnalytics/releases/download/1.0.2/KMMAnalytics.xcframework.zip",
-checksum:"94b68f363f80d3188864f58ccec4f5437ea0cb50b1a4a780a13516b4be554be1"
+     url: "https://github.com/aleksa-aetherius/KMMAnalytics/releases/download/1.0.4/KMMAnalytics.xcframework.zip,
+checksum:"c8d21d43490f94ecd442bad114e7684f2898d9624f757a78d13d09dc06fca885"
 )
   ]
 )
