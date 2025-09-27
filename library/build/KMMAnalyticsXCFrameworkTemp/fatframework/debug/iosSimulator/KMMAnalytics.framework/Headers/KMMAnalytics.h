@@ -149,6 +149,12 @@ __attribute__((swift_name("CustomFibiKt")))
 @end
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KMMAnalyticsEventSenderKt")))
+@interface KMMAKMMAnalyticsEventSenderKt : KMMABase
++ (void)sendHomeScreenViewedEvent __attribute__((swift_name("sendHomeScreenViewedEvent()")));
+@end
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Fibiprops_iosKt")))
 @interface KMMAFibiprops_iosKt : KMMABase
 @property (class, readonly) int32_t firstElement __attribute__((swift_name("firstElement")));

@@ -1,0 +1,211 @@
+{
+  "projectStructure": {
+    "formatVersion": "0.3.3",
+    "isPublishedAsRoot": "true",
+    "variants": [
+      {
+        "name": "debugApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "debugRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "releaseApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "releaseRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosArm64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosSimulatorArm64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "iosX64ApiElements",
+        "sourceSet": [
+          "iosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "jsApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "jsRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "jvmApiElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "jvmRuntimeElements",
+        "sourceSet": [
+          "commonMain"
+        ]
+      },
+      {
+        "name": "macosArm64ApiElements",
+        "sourceSet": [
+          "macosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "macosX64ApiElements",
+        "sourceSet": [
+          "macosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "tvosArm64ApiElements",
+        "sourceSet": [
+          "tvosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "tvosSimulatorArm64ApiElements",
+        "sourceSet": [
+          "tvosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      },
+      {
+        "name": "tvosX64ApiElements",
+        "sourceSet": [
+          "tvosMain",
+          "appleMain",
+          "nativeMain",
+          "commonMain"
+        ]
+      }
+    ],
+    "sourceSets": [
+      {
+        "name": "appleMain",
+        "dependsOn": [
+          "nativeMain"
+        ],
+        "moduleDependency": [
+          "dev.datlag.firebase:firebase-app",
+          "dev.datlag.firebase:firebase-common",
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "appleMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "commonMain",
+        "dependsOn": [],
+        "moduleDependency": [
+          "dev.datlag.firebase:firebase-app",
+          "org.jetbrains.kotlin:kotlin-stdlib",
+          "dev.datlag.firebase:firebase-common",
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "binaryLayout": "klib"
+      },
+      {
+        "name": "iosMain",
+        "dependsOn": [
+          "appleMain"
+        ],
+        "moduleDependency": [
+          "dev.datlag.firebase:firebase-app",
+          "dev.datlag.firebase:firebase-common",
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "iosMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "macosMain",
+        "dependsOn": [
+          "appleMain"
+        ],
+        "moduleDependency": [
+          "dev.datlag.firebase:firebase-app",
+          "dev.datlag.firebase:firebase-common",
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "macosMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "nativeMain",
+        "dependsOn": [
+          "commonMain"
+        ],
+        "moduleDependency": [
+          "dev.datlag.firebase:firebase-app",
+          "dev.datlag.firebase:firebase-common",
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "nativeMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      },
+      {
+        "name": "tvosMain",
+        "dependsOn": [
+          "appleMain"
+        ],
+        "moduleDependency": [
+          "dev.datlag.firebase:firebase-app",
+          "dev.datlag.firebase:firebase-common",
+          "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+        ],
+        "sourceSetCInteropMetadataDirectory": "tvosMain-cinterop",
+        "binaryLayout": "klib",
+        "hostSpecific": "true"
+      }
+    ]
+  }
+}

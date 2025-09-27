@@ -1,7 +1,7 @@
 abi_version=2.2.0
 builtins_platform=NATIVE
 compiler_version=2.2.10
-depends=stdlib
+depends=stdlib org.jetbrains.kotlinx\:kotlinx-serialization-core org.jetbrains.kotlinx\:atomicfu-cinterop-interop org.jetbrains.kotlinx\:atomicfu org.jetbrains.kotlinx\:kotlinx-coroutines-core dev.gitlive\:firebase-common dev.gitlive\:firebase-app-cinterop-FirebaseCore dev.gitlive\:firebase-app dev.gitlive\:firebase-common-internal dev.gitlive\:firebase-firestore-cinterop-FirebaseFirestoreInternal dev.gitlive\:firebase-firestore-cinterop-FirebaseFirestore dev.gitlive\:firebase-firestore dev.gitlive\:firebase-auth-cinterop-FirebaseAuth dev.gitlive\:firebase-auth dev.gitlive\:firebase-storage-cinterop-FirebaseStorage dev.gitlive\:firebase-storage dev.gitlive\:firebase-functions-cinterop-FirebaseFunctions dev.gitlive\:firebase-functions dev.gitlive\:firebase-analytics-cinterop-FirebaseAnalytics dev.gitlive\:firebase-analytics org.jetbrains.kotlinx\:kotlinx-serialization-json
 ir_signature_versions=1,2
 language_features=+MultiPlatformProjects
 metadata_version=1.4.1

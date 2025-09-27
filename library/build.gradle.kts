@@ -6,8 +6,10 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.vanniktech.mavenPublish)
+    kotlin("plugin.serialization") version "1.9.20"
 }
 
+val firebaseVersion = "2.1.0"
 group = "io.github.kotlin"
 version = "1.0.0"
 
@@ -38,12 +40,17 @@ kotlin {
         }
     }
 
-    linuxX64()
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // put your multiplatform dependencies here
+                implementation("dev.gitlive:firebase-firestore:$firebaseVersion")
+                implementation("dev.gitlive:firebase-common:$firebaseVersion")
+                implementation("dev.gitlive:firebase-auth:$firebaseVersion")
+                implementation("dev.gitlive:firebase-storage:$firebaseVersion")
+                implementation("dev.gitlive:firebase-functions:$firebaseVersion")
+                implementation("dev.gitlive:firebase-analytics:$firebaseVersion")
+
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
             }
         }
         val commonTest by getting {
@@ -51,7 +58,17 @@ kotlin {
                 implementation(libs.kotlin.test)
             }
         }
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+        }
     }
+
 }
 
 android {
