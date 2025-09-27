@@ -6,6 +6,8 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
+@class KMMAAnalyticsEvents;
+
 @protocol KMMAKotlinIterator, KMMAKotlinSequence;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -140,6 +142,25 @@ __attribute__((swift_name("KotlinBoolean")))
 @interface KMMABoolean : KMMANumber
 - (instancetype)initWithBool:(BOOL)value;
 + (instancetype)numberWithBool:(BOOL)value;
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("AnalyticsEvents")))
+@interface KMMAAnalyticsEvents : KMMABase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)analyticsEvents __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) KMMAAnalyticsEvents *shared __attribute__((swift_name("shared")));
+- (void)home_screen_viewedScreen_name:(NSString *)screen_name timestamp:(int32_t)timestamp __attribute__((swift_name("home_screen_viewed(screen_name:timestamp:)")));
+- (void)purchase_completedProduct_id:(NSString *)product_id price:(int32_t)price __attribute__((swift_name("purchase_completed(product_id:price:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("AnalyticsEventsKt")))
+@interface KMMAAnalyticsEventsKt : KMMABase
++ (void)cart_addedAmount:(int32_t)amount __attribute__((swift_name("cart_added(amount:)")));
++ (void)home_screen_viewedScreen_name:(NSString *)screen_name timestamp:(int32_t)timestamp __attribute__((swift_name("home_screen_viewed(screen_name:timestamp:)")));
++ (void)purchase_completedProduct_id:(NSString *)product_id price:(int32_t)price __attribute__((swift_name("purchase_completed(product_id:price:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))

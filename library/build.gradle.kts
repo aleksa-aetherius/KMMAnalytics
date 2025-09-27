@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+import groovy.json.JsonSlurper
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -166,3 +167,64 @@ tasks.register("swiftPackage") {
         )
     }
 }
+
+val generateEvents by tasks.registering {
+    val inputFile = layout.projectDirectory.file("Events.json")
+    val outputDir = project.file("src/commonMain/kotlin")
+
+    inputs.file(inputFile)
+    outputs.dir(outputDir)
+
+    doLast {
+        val json = groovy.json.JsonSlurper().parse(inputFile.asFile)
+        val sb = StringBuilder()
+
+        sb.appendLine("package io.github.kotlin.fibonacci")
+        sb.appendLine()
+        sb.appendLine("import dev.gitlive.firebase.Firebase")
+        sb.appendLine("import dev.gitlive.firebase.analytics.analytics")
+        sb.appendLine()
+        sb.appendLine("// AUTO-GENERATED FILE. DO NOT EDIT.")
+
+        (json as List<Map<*, *>>).forEach { event ->
+            val name = event["name"] as String
+            val params = event["params"] as List<Map<*, *>>
+
+            // function signature
+            val fnParams = params.joinToString(", ") { p ->
+                val type = when (p["type"]) {
+                    "int" -> "Int"
+                    "string" -> "String"
+                    else -> "String" // default
+                }
+                "${p["name"]}: $type"
+            }
+
+            sb.appendLine("fun $name($fnParams) {")
+            sb.appendLine("    Firebase.analytics.logEvent(")
+            sb.appendLine("        name = \"$name\",")
+            sb.appendLine("        parameters = mapOf(")
+
+            val mapEntries = params.joinToString(",\n") { p ->
+                "            \"${p["name"]}\" to ${p["name"]}"
+            }
+
+            sb.appendLine(mapEntries)
+            sb.appendLine("        )")
+            sb.appendLine("    )")
+            sb.appendLine("}")
+            sb.appendLine()
+        }
+
+        val outputFile = outputDir.resolve("AnalyticsEvents.kt")
+        outputFile.parentFile.mkdirs()
+        outputFile.writeText(sb.toString())
+    }
+}
+
+// Add generated sources to the source set
+kotlin.sourceSets["commonMain"].kotlin.srcDir(
+    tasks.named("generateEvents").map {
+        layout.buildDirectory.dir("generated/source/events")
+    }
+)
