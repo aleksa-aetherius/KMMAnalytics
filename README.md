@@ -53,7 +53,7 @@ kotlin {
 
 ## 📖 Step by step guide for adding a new event
 
-1. Add the new event in `Events.json` file. This is an example of the content of `Events.json` file:
+1. Add the new event in `Events.json` file. This is an example of that file content:
 ```
 [
   {
