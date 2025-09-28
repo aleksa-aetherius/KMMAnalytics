@@ -26,7 +26,7 @@ KMMAnalytics is a Kotlin Multiplatform library that lets you send **Firebase Ana
 
 Add KMMAnalytics to your project via Gradle:
 
-1. Kotlin Multiplatform
+**1. Kotlin Multiplatform**
 
 ```kotlin
 kotlin {
@@ -40,14 +40,14 @@ kotlin {
 }
 ```
 
-2. iOS
+**2. iOS**
 
 - Open iOS project
 - Tap on `File -> Add Package Dependencies` 
 - In `Search or Enter Package URL type` -> https://github.com/aleksa-aetherius/KMMAnalytics
 - Tap `Add Package`
 
-3. Android
+**3. Android**
 
 - To Be Added
 
@@ -147,7 +147,7 @@ let package = Package(
 
 ## 📱 Usage
 
-1. iOS
+**1. iOS**
 
 - Import the added KMM library to the Swfft file from which you want to trigger sending an event
 `import KMMAnalytics`
@@ -159,7 +159,7 @@ let package = Package(
                 timestamp: Int32(20)
   )
 ```
-2. Android
+**2. Android**
 - To be added
 
 
