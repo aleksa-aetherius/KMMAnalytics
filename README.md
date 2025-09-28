@@ -8,7 +8,7 @@ KMMAnalytics is a Kotlin Multiplatform library that lets you send **Firebase Ana
 
 - Single API for logging analytics events on Android (via Firebase Analytics SDK) and iOS (via Firebase for iOS).  
 - Support for event parameters (integer, string).   
-- Events are auto-generated based on Events.json file making sure the event name and event properties are unified across platforms
+- Events are auto-generated, making sure the event name and event properties are unified across platforms
 
 ---
 
@@ -43,9 +43,9 @@ kotlin {
 2. iOS
 
 - Open iOS project
-- Tap on File -> Add Package Dependencies
-- In Search or Enter Package URL type -> https://github.com/aleksa-aetherius/KMMAnalytics
-- Tap "Add Package"
+- Tap on `File -> Add Package Dependencies` 
+- In `Search or Enter Package URL type` -> https://github.com/aleksa-aetherius/KMMAnalytics
+- Tap `Add Package`
 
 3. Android
 
@@ -54,7 +54,8 @@ kotlin {
 ## 📖 Step by step guide for adding a new event
 
 1. Add the event you want to add in `Events.json` file. This is an example of the content of `Events.json` file:
-`[
+```
+[
   {
     "name": "home_screen_viewed",
     "params": [
@@ -75,11 +76,11 @@ kotlin {
       { "name": "amount", "type": "int" }
     ]
   }
-]`
-
-2, Run the `generateEvents` script inside `build.gradle.kts`
+]
+```
+2. Run the `generateEvents` script inside `build.gradle.kts`
 3. Observe that the events genereted inside `AnalyticsEvents.kt`:
-`
+```
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.analytics.analytics
 
@@ -112,7 +113,7 @@ fun cart_added(amount: Int) {
         )
     )
 }
-`
+```
 4. Publish the new version of the library
 
 ## 📱 Usage
