@@ -155,8 +155,8 @@ let package = Package(
 - Trigger the event from the KMM library ->
 ```
   AnalyticsEventsKt.home_screen_viewed(
-                screen_name: "home_screen",
-                timestamp: Int32(20)
+    screen_name: "home_screen",
+    timestamp: Int32(20)
   )
 ```
 **2. Android**
