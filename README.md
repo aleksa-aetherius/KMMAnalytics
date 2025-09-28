@@ -114,7 +114,36 @@ fun cart_added(amount: Int) {
     )
 }
 ```
-4. Publish the new version of the library
+
+4. Publish the new version of the KMMAnalaytics SDK for iOS
+- Generate the `XCFramework` by running -> `./gradlew assembleKMMAnalyticsXCFramework`
+- ZIP(compress) the generated `XCFramework`
+- Get the checksum by running -> `swift package compute-checksum KMMAnalytics.xcframework.zip`
+- Upload the zipped `XCFramework` to GitHub
+- Update the `Package.swift` file with the new link to the `XCFramework` and the new checksum:
+```
+// swift-tools-version:5.9
+import PackageDescription
+
+let package = Package(
+  name: "KMMAnalytics",
+  platforms: [
+   .iOS(.v14),
+  ],
+  products: [
+   .library(name: "KMMAnalytics", targets: ["KMMAnalytics"])
+  ],
+  targets: [
+   .binaryTarget(
+     name: "KMMAnalytics",
+     url: "https://github.com/aleksa-aetherius/KMMAnalytics/releases/download/1.0.4/KMMAnalytics.xcframework.zip (NEW XCFRAMEWORK URL)",
+     checksum:"c8d21d43490f94ecd442bad114e7684f2898d9624f757a78d13d09dc06fca885 (NEW CHECKSUM)"
+    )
+  ]
+)
+```
+- Publish a new GitHub release with the new tag for `KMMAnalytics` repository
+- Right click the `KMMAnalytics` package in your iOS app and tap on `Update Package`
 
 ## 📱 Usage
 
@@ -124,11 +153,12 @@ fun cart_added(amount: Int) {
 `import KMMAnalytics`
 
 - Trigger the event from the KMM library ->
-`  AnalyticsEventsKt.home_screen_viewed(
+```
+  AnalyticsEventsKt.home_screen_viewed(
                 screen_name: "home_screen",
                 timestamp: Int32(20)
-)`
-
+  )
+```
 2. Android
 - To be added
 
